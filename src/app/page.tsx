@@ -3,7 +3,8 @@ import { Flex, Button, Col, Row } from 'antd';
 import ChartsLayout from '@/components/ChartsLayout';
 import ChartCard from '@/components/ChartCard';
 
-import DemoChart from '@/containers/DemoChart';
+import DailyDiseaseChart from '@/containers/DailyDiseaseChart';
+import Chart2 from '@/containers/Chart2';
 
 import styles from './page.module.css';
 
@@ -11,7 +12,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <ChartsLayout
-        heading="Page title"
+        heading="Covid disease statistics"
         actions={
           <Flex gap="small" wrap="wrap">
             <Button type="primary">Export to PDF</Button>
@@ -22,14 +23,14 @@ export default function Home() {
       >
         <Row gutter={15}>
           <Col span={12}>
-            <ChartCard title="Chart title">
-              <DemoChart />
+            <ChartCard title="New cases">
+              <DailyDiseaseChart />
             </ChartCard>
           </Col>
 
           <Col span={12}>
             <ChartCard title="Chart title">
-              <DemoChart />
+              <Chart2 />
             </ChartCard>
           </Col>
         </Row>

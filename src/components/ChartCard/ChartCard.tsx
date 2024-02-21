@@ -22,6 +22,6 @@ const ChartCard: React.FC<Props> = ({ title, children, footer }) => (
     {children}
     {footer && <footer className={styles.chartCard__footer}>{footer}</footer>}
   </Card>
-)
+);
 
 export default ChartCard;

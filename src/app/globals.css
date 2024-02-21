@@ -3,6 +3,7 @@
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
   --app-width: 1300px;
+  --app-bg-color: #f7f7f7;
   --shadow-400: 0 0 7px -1px rgba(0, 0, 0, 0.3);
 }
 
@@ -16,6 +17,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background: var(--app-bg-color);
 }
 
 a {
