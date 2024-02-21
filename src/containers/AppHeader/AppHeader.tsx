@@ -1,5 +1,6 @@
-import styles from './styles.module.scss';
 import Link from 'next/link';
+
+import styles from './styles.module.scss';
 const AppHeader = () => {
   return (
     <header className={styles.appHeader}>
