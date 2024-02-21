@@ -1,0 +1,20 @@
+.appHeader {
+  padding: 20px;
+  box-shadow: var(--shadow-400);
+
+  &__container {
+    max-width: var(--app-width);
+    margin: 0 auto;
+  }
+
+  &__branding {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0b403b;
+    transition: 0.3s opacity;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
