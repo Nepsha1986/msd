@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { Inter } from 'next/font/google';
 import AppHeader from '@/containers/AppHeader';
+import { ConfigProvider, ThemeConfig } from "antd";
 
 import './globals.css';
 
@@ -12,6 +13,14 @@ export const metadata: Metadata = {
   description: 'MSD Assignment for Frontend Developer Position',
 };
 
+// TODO: Research if we can use one source of truth for styling.
+const config: ThemeConfig = {
+  token: {
+    colorPrimary: '#01857c',
+    colorBorder: '#fff',
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,13 +29,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AntdRegistry>
-          <>
+        <ConfigProvider theme={config}>
+          <AntdRegistry>
             <AppHeader />
-
             {children}
-          </>
-        </AntdRegistry>
+          </AntdRegistry>
+        </ConfigProvider>
       </body>
     </html>
   );

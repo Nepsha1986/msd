@@ -4,7 +4,7 @@
   background: #fff;
 
   &__container {
-    max-width: var(--app-width);
+    max-width: calc(var(--app-width) + 100px);
     margin: 0 auto;
   }
 
