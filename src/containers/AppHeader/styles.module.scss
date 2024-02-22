@@ -1,9 +1,10 @@
 .appHeader {
   padding: 20px;
   box-shadow: var(--shadow-400);
+  background: #fff;
 
   &__container {
-    max-width: var(--app-width);
+    max-width: calc(var(--app-width) + 100px);
     margin: 0 auto;
   }
 
