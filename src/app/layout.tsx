@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { Inter } from 'next/font/google';
 import AppHeader from '@/containers/AppHeader';
-import { ConfigProvider, ThemeConfig } from "antd";
+import { ConfigProvider, ThemeConfig } from 'antd';
 
 import './globals.css';
 
@@ -17,7 +17,14 @@ export const metadata: Metadata = {
 const config: ThemeConfig = {
   token: {
     colorPrimary: '#01857c',
-    colorBorder: '#fff',
+  },
+  components: {
+    Card: {
+      headerFontSize: 22,
+    },
+    Button: {
+      colorBorder: '#fff',
+    },
   },
 };
 

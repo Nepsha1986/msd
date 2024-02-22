@@ -11,12 +11,19 @@ interface Props {
   actions?: ReactNode;
   children?: ReactNode;
 }
+
+// TODO: Probably can be rewritten with usage of Flex/Grid Antd components
 const ChartsLayout: FC<Props> = ({ heading, actions, children }) => {
   return (
     <section className={styles.chartsLayout}>
       <div className={styles.chartsLayout__container}>
         <header className={styles.chartsLayout__header}>
-          <Title style={{fontSize: '1.2rem'}} className={styles.chartsLayout__heading}>{heading}</Title>
+          <Title
+            style={{ fontSize: '1.2rem', marginBottom: 0 }}
+            className={styles.chartsLayout__heading}
+          >
+            {heading}
+          </Title>
 
           {actions && (
             <div className={styles.chartsLayout__actions}>{actions}</div>

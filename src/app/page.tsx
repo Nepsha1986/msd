@@ -1,11 +1,10 @@
-import { Flex, Button, Col, Row, Badge } from 'antd';
-import { DownloadOutlined, FilterOutlined, BarsOutlined } from '@ant-design/icons';
+import { Col, Row } from 'antd';
 
-import DailyDiseaseChart from '@/containers/DailyDiseaseChart';
 import Chart2 from '@/containers/Chart2';
+import ChartActions from '@/containers/ChartActions';
+import DailyDiseaseChart from '@/containers/DailyDiseaseChart';
 
 import ChartsLayout from '@/components/ChartsLayout';
-import ChartCard from '@/components/ChartCard';
 
 import styles from './page.module.css';
 
@@ -14,30 +13,15 @@ export default function Home() {
     <main className={styles.main}>
       <ChartsLayout
         heading="Covid disease statistics"
-        actions={
-          <Flex gap="large" wrap="wrap">
-            <Button size='large' icon={<DownloadOutlined />}>Export to PDF</Button>
-            <Badge count={3} color='#9a9a9e'>
-              <Button size='large' icon={<BarsOutlined />}>Notes</Button>
-            </Badge>
-
-            <Badge count={109} overflowCount={9} color='cyan'>
-              <Button size='large' icon={<FilterOutlined/>}>Filter</Button>
-            </Badge>
-          </Flex>
-        }
+        actions={<ChartActions />}
       >
         <Row gutter={25}>
           <Col span={12}>
-            <ChartCard title="New cases">
-              <DailyDiseaseChart />
-            </ChartCard>
+            <DailyDiseaseChart />
           </Col>
 
           <Col span={12}>
-            <ChartCard title="Chart title">
-              <Chart2 />
-            </ChartCard>
+            <Chart2 />
           </Col>
         </Row>
       </ChartsLayout>
