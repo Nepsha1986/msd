@@ -29,6 +29,7 @@ const ChartsLayout: FC<Props> = ({ heading, actions, children }) => {
     }),
   );
 
+  // TODO: Rewrite with Flex/Grid components
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
