@@ -1,72 +1,60 @@
 import axios from 'axios';
-import { z, ZodError } from 'zod';
+import { z } from 'zod';
 import { TRPCError } from '@trpc/server';
 
-import { CORONAVIRUS_API as API } from '@/server/utils/api';
 import { router, procedure } from '../trpc';
-import { formatFilters } from '@/server/utils/formatFilters';
-
-const areaType = z.enum([
-  'overview',
-  'nation',
-  'region',
-  'nhsRegion',
-  'utla',
-  'ltla',
-]);
-
-const filters = z
-  .object({
-    areaType,
-    areaName: z.string().optional(),
-    areaCode: z.string().optional(),
-    date: z.string().optional(),
-  })
-  .optional();
-
-// TODO: Make more type specific
-const structure = z.string();
+import { CORONAVIRUS_API as API } from '@/server/utils/api';
+import { stringifyFilters } from '@/server/utils/stringifyFilters';
+import { CovidDataScheme, FiltersScheme } from '@/server/schemas';
+import { stringifyStructure } from '@/server/utils/stringifyStructure';
 
 const statsItem = z.object({
-  date: z.string(),
-  areaName: z.string(),
-  areaCode: z.string(),
-  confirmedRate: z.number(),
-  latestBy: z.number(),
-  confirmed: z.number(),
-  deathNew: z.number(),
-  death: z.number(),
-  deathRate: z.number(),
+  femaleCases: z.any().array(),
+  maleCases: z.any().array(),
 });
 
-const statsRes = z.object({
+const StatsScheme = z.object({
   length: z.number(),
   maxPageLimit: z.number(),
   totalRecords: z.number(),
-  data: z.array(statsItem),
+  data: statsItem.array().length(1),
 });
+
+export type StatsResponse = z.infer<typeof StatsScheme>;
+
+const Structure = z.record(z.string(), CovidDataScheme);
+type ResStructure = z.infer<typeof Structure>;
 
 export const statsRouter = router({
   getStats: procedure
     .input(
       z.object({
-        filters,
-        structure,
+        filters: FiltersScheme.pick({
+          date: true,
+          areaName: true,
+          areaType: true,
+        }),
       }),
     )
     .query(async ({ input }) => {
-      const filters = formatFilters(input.filters as Record<string, string>);
-      const structure = input.structure;
+      const filters = input.filters;
+      const reqStructure: ResStructure = {
+        date: 'date',
+        name: 'areaName',
+        code: 'areaCode',
+        femaleCases: 'femaleCases',
+        maleCases: 'maleCases',
+      };
 
       try {
-        const { data } = await axios.get(API, {
+        const { data } = await axios.get<StatsResponse>(API, {
           params: {
-            filters,
-            structure,
+            filters: stringifyFilters(filters),
+            structure: stringifyStructure(reqStructure),
           },
         });
 
-        return data;
+        return StatsScheme.parse(data);
       } catch (error) {
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',

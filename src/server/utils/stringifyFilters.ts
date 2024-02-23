@@ -1,6 +1,8 @@
 /**
  * Formats filters for use in the Coronavirus API.
  *
+ * API docs: https://coronavirus.data.gov.uk/details/developers-guide/main-api
+ *
  * @example
  * const filters = {
  *   areaType: 'overview',
@@ -8,10 +10,8 @@
  * };
  *
  * Output: "areaType=overview;date=2022-01-01"
- *
- * @todo Consider making the function more type-specific if needed.
  */
-export const formatFilters = (obj: Record<string, string>): string =>
-  Object.entries(obj)
+export const stringifyFilters = (filters: Record<string, string>): string =>
+  Object.entries(filters)
     .map(([key, value]) => `${key}=${value}`)
     .join(';');
