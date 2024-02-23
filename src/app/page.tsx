@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 
-import Chart2 from '../containers/PatientsChart';
-import ChartActions from '@/containers/ChartActions';
+import PatientsChart from '../containers/PatientsChart';
+import ChartsActions from '../containers/ChartsActions';
 import DailyDiseaseChart from '@/containers/DailyDiseaseChart';
 
 import ChartsLayout from '@/components/ChartsLayout';
@@ -13,7 +13,7 @@ export default function Home() {
     <main className={styles.main}>
       <ChartsLayout
         heading="Covid disease statistics"
-        actions={<ChartActions />}
+        actions={<ChartsActions />}
       >
         <Row gutter={25}>
           <Col span={12}>
@@ -21,10 +21,14 @@ export default function Home() {
           </Col>
 
           <Col span={12}>
-            <Chart2 />
+            <PatientsChart />
           </Col>
         </Row>
       </ChartsLayout>
+
+      <p style={{ marginTop: '30px' }}>
+        Please read README.md for assignment explanation
+      </p>
     </main>
   );
 }

@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   description: 'MSD Assignment for Frontend Developer Position',
 };
 
-// TODO: Research if we can use one source of truth for styling.
 const config: ThemeConfig = {
   token: {
     colorPrimary: '#01857c',

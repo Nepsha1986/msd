@@ -15,18 +15,18 @@ const Column = dynamic(
 );
 
 type ChartItem = {
-  gender: 'female' | 'male';
+  gender: 'Female' | 'Male';
   age: string;
   rate: number;
 };
 
 const convertToChartData = (resData: StatsResponse): ChartItem[] => {
   const females: ChartItem[] = resData.data[0].femaleCases.map((item) => ({
-    gender: 'female',
+    gender: 'Female',
     ...item,
   }));
   const males: ChartItem[] = resData.data[0].maleCases.map((item) => ({
-    gender: 'male',
+    gender: 'Male',
     ...item,
   }));
   return [...females, ...males];
@@ -52,7 +52,6 @@ const DailyDiseaseChart = () => {
     if (!!data) setCases(convertToChartData(data));
   }, [data]);
 
-  // TODO: Implement Error boundary if time left
   if (error) return <p>Error, please try again later</p>;
 
   const config: ColumnConfig = {

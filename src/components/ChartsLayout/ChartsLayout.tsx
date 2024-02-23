@@ -6,6 +6,7 @@ import { Typography } from 'antd';
 import styles from './styles.module.scss';
 import { httpBatchLink } from '@trpc/client';
 import { trpc } from '@/utils/trpc';
+import { getBaseUrl } from '@/utils/getBaseUrl';
 
 const { Title } = Typography;
 
@@ -15,7 +16,6 @@ interface Props {
   children?: ReactNode;
 }
 
-// TODO: Probably can be rewritten with usage of Flex/Grid Antd components
 const ChartsLayout: FC<Props> = ({ heading, actions, children }) => {
   const [queryClient] = useState(() => new QueryClient());
 
@@ -23,7 +23,7 @@ const ChartsLayout: FC<Props> = ({ heading, actions, children }) => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: 'http://localhost:3000/api',
+          url: `${getBaseUrl()}/api`,
         }),
       ],
     }),
