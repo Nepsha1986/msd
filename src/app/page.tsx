@@ -27,7 +27,7 @@ export default function Home() {
       </ChartsLayout>
 
       <p style={{ marginTop: '30px' }}>
-        Please read README.md for assignment explanation
+        Please read the README.md for the assignment explanation.
       </p>
     </main>
   );
