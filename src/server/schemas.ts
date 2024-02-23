@@ -23,6 +23,7 @@ export const CovidDataScheme = z.enum([
   'capacityPillarOneTwo',
   'femaleCases',
   'maleCases',
+  'cumAdmissionsByAge',
 ]);
 
 export const FiltersScheme = z.object({

@@ -1,5 +1,5 @@
 import { router } from '@/server/trpc';
-import { statsRouter } from '@/server/routers/stats.router';
+import { statsRouter } from '@/server/routers/stats/_stats.router';
 
 export const appRouter = router({
   stats: statsRouter,

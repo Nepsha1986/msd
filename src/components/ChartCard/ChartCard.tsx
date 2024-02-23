@@ -24,10 +24,10 @@ const ChartCard: React.FC<Props> = ({
     className={styles.chartCard}
     title={title}
     styles={{ body: cardBodyStyles }}
+    actions={[footer]}
     loading={loading}
   >
     {children}
-    {footer && <footer className={styles.chartCard__footer}>{footer}</footer>}
   </Card>
 );
 

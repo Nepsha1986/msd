@@ -7,7 +7,7 @@ import { Skeleton } from 'antd';
 import ChartCard from '@/components/ChartCard';
 import ChartFooter from '@/containers/ChartFooter';
 import { trpc } from '@/utils/trpc';
-import { StatsResponse } from '@/server/routers/stats.router';
+import { StatsResponse } from '@/server/routers/stats/casesByGender.router';
 
 const Column = dynamic(
   () => import('@ant-design/charts').then((mod) => mod.Column),
@@ -16,7 +16,7 @@ const Column = dynamic(
 
 type ChartItem = {
   gender: 'female' | 'male';
-  age: number;
+  age: string;
   rate: number;
 };
 
@@ -37,7 +37,7 @@ const statisticsDate = '2023-12-13';
 const DailyDiseaseChart = () => {
   const [cases, setCases] = useState<ChartItem[]>([]);
 
-  const { data, isLoading, error } = trpc.stats.getStats.useQuery(
+  const { data, isLoading, error } = trpc.stats.casesByGender.get.useQuery(
     {
       filters: {
         date: statisticsDate,
@@ -52,7 +52,7 @@ const DailyDiseaseChart = () => {
     if (!!data) setCases(convertToChartData(data));
   }, [data]);
 
-  // TODO: Implement Error boundary instead?
+  // TODO: Implement Error boundary if time left
   if (error) return <p>Error, please try again later</p>;
 
   const config: ColumnConfig = {
@@ -73,8 +73,9 @@ const DailyDiseaseChart = () => {
     <ChartCard
       title={`New cases on ${statisticsDate}`}
       footer={<ChartFooter />}
+      loading={isLoading}
     >
-      {isLoading ? <p>Loading....</p> : <Column {...config} />}
+      <Column {...config} />
     </ChartCard>
   );
 };
