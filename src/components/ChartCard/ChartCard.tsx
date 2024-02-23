@@ -1,8 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
 
-import styles from './styles.module.scss';
-
 interface Props {
   title: string;
   children: React.ReactNode;
@@ -21,7 +19,6 @@ const ChartCard: React.FC<Props> = ({
   loading = false,
 }) => (
   <Card
-    className={styles.chartCard}
     title={title}
     styles={{ body: cardBodyStyles }}
     actions={[footer]}

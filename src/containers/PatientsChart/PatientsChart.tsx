@@ -12,19 +12,22 @@ const Pie = dynamic(() => import('@ant-design/charts').then((mod) => mod.Pie), {
   loading: () => <Skeleton />,
 });
 
-const statisticsDate = '2023-12-13';
-
 const PatientsChart = () => {
-  const { data, isLoading, error } =
-    trpc.stats.admissionRatesByAge.get.useQuery({
-      filters: {
-        areaName: 'england',
-      },
-    });
+  const {
+    data: res,
+    isLoading,
+    error,
+  } = trpc.stats.admissionRatesByAge.get.useQuery({
+    filters: {
+      areaName: 'england',
+    },
+  });
+
+  if (error) return <p>Error, please try again later</p>;
 
   const config = {
     appendPadding: 300,
-    data: data?.data[0].admission,
+    data: res?.data[0].admission,
     angleField: 'value',
     colorField: 'age',
     radius: 1,

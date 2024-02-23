@@ -10,7 +10,7 @@ const areaType = z.enum([
 ]);
 
 /**
- * Not complete; please refer to these docs: https://coronavirus.data.gov.uk/details/developers-guide/main-api
+ * Not a full list; please refer to these docs: https://coronavirus.data.gov.uk/details/developers-guide/main-api
  */
 export const CovidDataScheme = z.enum([
   'areaType',

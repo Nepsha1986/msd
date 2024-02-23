@@ -5,7 +5,7 @@ import {
   FilterOutlined,
 } from '@ant-design/icons';
 
-const ChartActions = () => {
+const ChartsActions = () => {
   return (
     <Flex gap="large" wrap="wrap">
       <Button size="large" icon={<DownloadOutlined />}>
@@ -26,4 +26,4 @@ const ChartActions = () => {
   );
 };
 
-export default ChartActions;
+export default ChartsActions;
