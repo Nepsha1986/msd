@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd';
 
-import Chart2 from '@/containers/Chart2';
+import Chart2 from '../containers/PatientsChart';
 import ChartActions from '@/containers/ChartActions';
 import DailyDiseaseChart from '@/containers/DailyDiseaseChart';
 
