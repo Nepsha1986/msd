@@ -4,3 +4,7 @@
   max-width: var(--app-width);
   margin: 0 auto;
 }
+
+.col {
+  margin-top: 1rem;
+}

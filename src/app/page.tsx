@@ -16,19 +16,23 @@ export default function Home() {
         actions={<ChartsActions />}
       >
         <Row gutter={25}>
-          <Col span={12}>
+          <Col
+            lg={{ span: 12 }}
+            sm={{ span: 24 }}
+            className={styles.col}
+          >
             <DailyDiseaseChart />
           </Col>
 
-          <Col span={12}>
+          <Col
+            lg={{ span: 12 }}
+            sm={{ span: 24 }}
+            className={styles.col}
+          >
             <PatientsChart />
           </Col>
         </Row>
       </ChartsLayout>
-
-      <p style={{ marginTop: '30px' }}>
-        Please read the README.md for the assignment explanation.
-      </p>
     </main>
   );
 }

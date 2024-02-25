@@ -35,10 +35,8 @@ const config: ThemeConfig = {
 ```
 
 - Need to research if it's possible to use one "source of truth" for styles. There should be some way to do this, keeping styles centralized (use variables both in .SCSS files and .tsx files).
-- Added .scss compiler from the beginning, but probably it can be avoided to use it here, as most styles would be component-library-specific.
-- Probably "ChartsLayout" component could be rewritten more clearly with the usage of AntDesign, but I will leave it as it is for now.
-- Loading state and chart initializing could be done better.
-- I didn't implement Error Boundaries as it requires some time and used simple error handling, but in a real project, this should be definitely done (for Next.js projects, new approaches might exist for client components, need to research).
+- Added .scss compiler from the beginning, but probably it can be avoided to use it here.
+- I didn't implement Error Boundaries as it requires some time and used simple error handling, but in a real project, this should be definitely done.
 - Research if it's possible to do such things better; looks like a hotfix
 
 ```jsx
