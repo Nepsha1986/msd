@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { Inter } from 'next/font/google';
 import AppHeader from '@/containers/AppHeader';
-import { ConfigProvider, ThemeConfig } from 'antd';
+import AppProviders from '@/app/AppProviders';
 
 import './globals.css';
 
@@ -13,20 +12,6 @@ export const metadata: Metadata = {
   description: 'MSD Assignment for Frontend Developer Position',
 };
 
-const config: ThemeConfig = {
-  token: {
-    colorPrimary: '#01857c',
-  },
-  components: {
-    Card: {
-      headerFontSize: 22,
-    },
-    Button: {
-      colorBorder: '#fff',
-    },
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,12 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ConfigProvider theme={config}>
-          <AntdRegistry>
-            <AppHeader />
-            {children}
-          </AntdRegistry>
-        </ConfigProvider>
+        <AppProviders>
+          <AppHeader />
+          {children}
+        </AppProviders>
       </body>
     </html>
   );
