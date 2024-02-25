@@ -15,22 +15,15 @@ interface Props {
 const ChartsLayout: FC<Props> = ({ heading, actions, children }) => {
   return (
     <section className={styles.chartsLayout}>
-      <div className={styles.chartsLayout__container}>
-        <header className={styles.chartsLayout__header}>
-          <Title
-            style={{ fontSize: '1.2rem', marginBottom: 0 }}
-            className={styles.chartsLayout__heading}
-          >
-            {heading}
-          </Title>
+      <header className={styles.chartsLayout__header}>
+        <Title style={{ fontSize: '1.2rem', marginBottom: 0 }}>{heading}</Title>
 
-          {actions && (
-            <div className={styles.chartsLayout__actions}>{actions}</div>
-          )}
-        </header>
+        {actions && (
+          <div className={styles.chartsLayout__actions}>{actions}</div>
+        )}
+      </header>
 
-        <div className={styles.chartsLayout__main}>{children}</div>
-      </div>
+      <div>{children}</div>
     </section>
   );
 };
